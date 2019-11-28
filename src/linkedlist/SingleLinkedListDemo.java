@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.Stack;
+
 public class SingleLinkedListDemo {
     public static void main(String[] args) {
         SingleLinkedList list = new SingleLinkedList();
@@ -12,7 +14,7 @@ public class SingleLinkedListDemo {
         list.addByOrder(n1);
         list.addByOrder(n3);
         list.list();
-        System.out.println(list.findLastIndexNode(4));
+        list.reversePrint();
     }
 }
 
@@ -164,6 +166,22 @@ class  SingleLinkedList {
         head.next = newHead.next;
     }
 
+    //逆序打印链表
+    //使用stack，在不破坏原链表的基础上，实现逆序打印
+    public void reversePrint() {
+        if (head.next == null) {
+            return;
+        }
+        Node temp = head.next;
+        Stack<Node> stack = new Stack<>();
+        while (temp != null) {
+            stack.push(temp);
+            temp = temp.next;
+        }
+        while (stack.size() > 0) {
+            System.out.println(stack.pop());
+        }
+    }
     //打印链表
     public void list() {
         Node temp = head.next;
