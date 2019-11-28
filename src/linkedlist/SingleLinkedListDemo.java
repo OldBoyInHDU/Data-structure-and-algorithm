@@ -158,6 +158,7 @@ class  SingleLinkedList {
         while (temp != null) {
             next = temp.next;//保存当前结点的下一个结点
             temp.next = newHead.next;
+            newHead.next = temp;
             temp = next;
         }
         head.next = newHead.next;
